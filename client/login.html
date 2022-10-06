@@ -6,15 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
     <link rel="stylesheet" href="./css/login.style.css" />
+    <link rel="stylesheet" href="./css/global.css" />
+    <script src="./js/auth.js" defer></script>
     <script src="./js/login.js" defer></script>
   </head>
   <body>
-    <form data-login-form>
-      <label for="username">Username</label>
-      <input id="username" type="text" required />
-      <label for="password">Password</label>
-      <input id="password" type="password" required />
-      <button type="submit">login</button>
-    </form>
+    <header>
+      <img src="./images/cat_logo.jpg" alt="" />
+      <div id="user-status"></div>
+    </header>
+    <main>
+      <form data-login-form>
+        <label for="username">Username</label>
+        <input id="username" type="text" required />
+        <label for="password">Password</label>
+        <input id="password" type="password" required />
+        <p data-login-form-message></p>
+        <button type="submit">login</button>
+        <a href="register.html">Don't have account? click here</a>
+      </form>
+    </main>
+    <footer>Copy right Jane &copy;</footer>
   </body>
 </html>

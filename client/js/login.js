@@ -1,6 +1,7 @@
 const loginFormEl = document.querySelector("[data-login-form]");
 const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
+const loginFormMessageEl = document.querySelector("[data-login-form-message]");
 
 loginFormEl.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -16,5 +17,13 @@ loginFormEl.addEventListener("submit", async (e) => {
     body: JSON.stringify(requestBody),
   });
   const data = await res.json();
-  console.log(data);
+
+  if (data.error) {
+    loginFormMessageEl.innerHTML = data.error;
+    loginFormMessageEl.className = "error-msg";
+  } else {
+    loginFormMessageEl.innerHTML = "Login successfully";
+    loginFormMessageEl.className = "success-msg";
+    localStorage.setItem("token", data.token);
+  }
 });

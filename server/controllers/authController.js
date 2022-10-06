@@ -25,12 +25,28 @@ exports.login = async (req, res, next) => {
 
     const user = await User.findOne({ username });
 
+    if (!user) return next(new AppError("User does't exist", 404));
+
     if (!(await user.passwordCorrect(password)))
       return next(new AppError("Password doesn't match", 403));
 
     const token = generateToken(user);
     res.status(200).json({ token });
   } catch (error) {
+    next(new AppError("Something want wrong"));
+  }
+};
+
+exports.authenticate = async (req, res, next) => {
+  try {
+    const { token } = req.body;
+    if (!token) return next(new AppError("Provide a token", 400));
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.id);
+    user.password = undefined;
+    res.status(200).json({ user });
+  } catch (error) {
+    console.log(error);
     next(new AppError("Something want wrong"));
   }
 };

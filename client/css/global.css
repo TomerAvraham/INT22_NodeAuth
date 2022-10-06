@@ -1,0 +1,56 @@
+:root {
+  --background-color: "#F2F2F2";
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--background-color);
+}
+
+header {
+  height: 80px;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90vw;
+  margin: 0 20px;
+}
+
+header > img {
+  width: 70px;
+  height: 70px;
+}
+
+main {
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+  height: 30px;
+  text-align: center;
+  padding-top: 3px;
+}
+
+.error-msg {
+  color: red;
+}
+
+.success-msg {
+  color: green;
+}
